@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments</title>
+</head>
+
+<body>
+  <ul class="nav" style="margin-left: 100px; margin-top: 15px;">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Appointments</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="list-doctors">Doctors</a>
+    </li>
+  </ul>
+  <div class="mt-5">
+    <h1 class="text-center">View Appointments</h1>
+    <div class="container">
+
+      <div class="my-3" style="text-align: right; margin-right: 20px;">
+        <button type="button" class="btn btn-primary" (click)="onAddAppointment()">Add Appointment</button>
+        <button type="button" style="margin-left: 10px;" class="btn btn-primary" (click)="onAddDoctor()">Add
+          Doctor</button>
+      </div>
+      <table class="table border">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Patient Email</th>
+            <th scope="col">Patient Number</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Appointment Date</th>
+            <th scope="col">Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments">
+            <td>{{appointment.id}}</td>
+            <td>{{appointment.patientName}}</td>
+            <td>{{appointment.patientEmail}}</td>
+            <td>{{appointment.patientMobile}}</td>
+            <td>{{appointment.dob}}</td>
+            <td>{{appointment.appointmentDate}}</td>
+            <td>{{appointment.doctorId}}</td>
+            <td>
+              <div class="d-inline mx-2">
+                <button class="btn btn-warning" (click)="updateAppointment(appointment.id)"
+                  type="button">Update</button>
+              </div>
+              <div class="d-inline">
+                <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)" type="button">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors</title>
+</head>
+
+<body>
+    <ul class="nav" style="margin-left: 100px; margin-top: 15px;">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Appointments</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="list-doctors">Doctors</a>
+        </li>
+    </ul>
+  <div class="mt-5">
+    <h1 class="text-center">View Doctors</h1>
+    <div class="container">
+
+      <div class="my-3" style="text-align: right; margin-right: 20px;">
+        <button type="button" class="btn btn-primary" (click)="onAddAppointment()">Add Appointment</button>
+        <button type="button" style="margin-left: 10px;" class="btn btn-primary" (click)="onAddDoctor()">Add
+          Doctor</button>
+      </div>
+      <table class="table border">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Specification</th>
+            <th scope="col">Time From</th>
+            <th scope="col">Time To</th>
+            <th scope="col">Max Patients per Day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of doctors">
+            <td>{{doctor.id}}</td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.specification}}</td>
+            <td>{{doctor.fromTime}}</td>
+            <td>{{doctor.toTime}}</td>
+            <td>{{doctor.maxAppointmentPerDay}}</td>
+            <td>
+              <div class="d-inline mx-2">
+                <button class="btn btn-warning" (click)="updateDoctor(doctor.id)"
+                  type="button">Update</button>
+              </div>
+              <div class="d-inline">
+                <button class="btn btn-danger" (click)="deleteDoctor(doctor.id)" type="button">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<router-outlet></router-outlet>
